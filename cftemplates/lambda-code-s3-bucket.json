@@ -1,0 +1,28 @@
+{
+  "AWSTemplateFormatVersion":"2010-09-09",
+  "Description": "CF Template to create S3 bucket for hosting code for lambda functions",
+  "Parameters":{
+
+    "BucketName":{
+      "Type":"String",
+      "Default":"",
+      "Description":"Bucket name"
+    }
+  },
+  "Resources":{
+
+   "CentralLoggingBucket" : {
+      "Type" : "AWS::S3::Bucket",
+      "Properties" : {
+        "BucketName" : {"Ref": "BucketName"}
+      }
+    }
+
+  },
+  "Outputs":{
+    "CentralCloudTrailsLogBucket":{
+        "Description" : "Bucket name",
+        "Value" : {"Ref": "BucketName"}
+    }
+  }
+}
